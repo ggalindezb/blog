@@ -17,3 +17,10 @@ class PostModel:
 
     def find(self, slug):
         return self.db.select(self.TABLE_NAME, condition=f'slug = "{slug}"')
+
+    def update(self, slug, content):
+        now = datetime.now()
+        return self.db.update(self.TABLE_NAME, {"content": content}, f'slug ="{slug}"')
+
+    def delete(self, slug):
+        return self.db.delete(self.TABLE_NAME, f'slug ="{slug}"')
