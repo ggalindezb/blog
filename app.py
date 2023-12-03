@@ -1,10 +1,17 @@
 from flask import Flask, request
-from sqlite4 import SQLite4
 from post_model import PostModel
+import auth
 
 app = Flask(__name__)
 
+@app.route("/login", methods=["POST"])
+def login():
+    secret = int(request.get_json()['secret'])
+    token = auth.generate_token(secret)
+    return {"jwt": token}
+
 @app.route("/posts")
+@auth.validate_request
 def fetch_posts():
     posts = PostModel()
     return posts.all()
@@ -36,4 +43,4 @@ def delete_post(slug):
     return ('', 200)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
