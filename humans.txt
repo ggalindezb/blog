@@ -1,8 +1,7 @@
 /*TEAM*/
-Role: Owner
-Name: Gerardo Galindez
+Owner: Gerardo Galindez
 Twitter: @ggalindezb
-Location: Mexico City, MX
+From: Mexico City, MX
 
 /*THANKS*/
 Favicon Generator: https://favicon.io/
@@ -12,6 +11,7 @@ Byte: https://photos.app.goo.gl/tfd4D7sDMW2XUHRw8
 
 /*SITE*/
 Last update: 2023/12/04
-Standards: HTML5, CSS3, ES6
+Language: English / Español
+Standards: HTML 5, CSS 3, ES6
 Components: React
 Software: Neovim
