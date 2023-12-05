@@ -4,6 +4,7 @@ Twitter: @ggalindezb
 From: Mexico City, MX
 
 /*THANKS*/
+Text to Runes: https://valhyr.com/pages/rune-converter
 Favicon Generator: https://favicon.io/
 Prefinem Icon Generator: https://prefinem.com/simple-icon-generator/
 Coolors Palette from Image: https://coolors.co/image-picker
