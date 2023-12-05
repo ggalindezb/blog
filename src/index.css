@@ -6,6 +6,12 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --smoky-black: #151410ff;
+  --jet: #2f312eff;
+  --gray: #7a7b7dff;
+  --beaver: #a08f7fff;
+  --rose-taupe: #89615fff;
 }
 
 a {
