@@ -6,9 +6,8 @@ app = Flask(__name__)
 
 @app.route('/login', methods=['POST'])
 def login():
-    secret = request.get_json()['secret']
-    breakpoint()
-    token = auth.generate_token(secret)
+    key = request.get_json()['key']
+    token = auth.generate_token(key)
     return {"jwt": token}
 
 @app.route('/posts')
