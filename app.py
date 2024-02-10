@@ -1,4 +1,4 @@
-from flask import Flask, request, g
+from flask import Flask, request, g, jsonify
 from post_model import PostModel
 import auth
 
@@ -6,19 +6,20 @@ app = Flask(__name__)
 
 @app.route('/login', methods=['POST'])
 def login():
-    secret = int(request.get_json()['secret'])
+    secret = request.get_json()['secret']
+    breakpoint()
     token = auth.generate_token(secret)
     return {"jwt": token}
 
 @app.route('/posts')
 def fetch_posts():
     posts = PostModel()
-    return posts.all()
+    return jsonify(posts.all())
 
 @app.route('/posts/<slug>')
 def fetch_post(slug):
     posts = PostModel()
-    return posts.find(slug)
+    return jsonify(posts.find(slug))
 
 @app.route('/posts', methods=['POST'])
 @auth.validate_token
@@ -45,4 +46,4 @@ def delete_post(slug):
     return ('', 200)
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
