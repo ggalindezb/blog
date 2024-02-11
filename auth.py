@@ -3,12 +3,10 @@ import os
 import functools
 import flask
 from flask import request, g
-from models.user_model import UserModel
 
 JWT_TOKEN = os.environ['JWT_TOKEN']
 
-def generate_token(key):
-    user = UserModel.find(key)
+def generate_token(user):
     return jwt.encode({'user_id': user.id}, JWT_TOKEN, algorithm='HS256')
 
 def validate_token(f):

@@ -1,14 +1,16 @@
-from flask import Flask, request, g, jsonify
+from flask import Flask, request, jsonify
 from post_model import PostModel
 import auth
+from models.user_model import UserModel
 
 app = Flask(__name__)
 
 @app.route('/login', methods=['POST'])
 def login():
     key = request.get_json()['key']
-    token = auth.generate_token(key)
-    return {"jwt": token}
+    user = UserModel.find_by(key=key)
+    token = auth.generate_token(user)
+    return jsonify({"jwt": token})
 
 @app.route('/posts')
 def fetch_posts():
