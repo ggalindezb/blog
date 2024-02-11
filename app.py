@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
-from post_model import PostModel
 import auth
+from models.post_model import PostModel
 from models.user_model import UserModel
 
 app = Flask(__name__)
@@ -8,7 +8,7 @@ app = Flask(__name__)
 @app.route('/login', methods=['POST'])
 def login():
     key = request.get_json()['key']
-    user = UserModel.find_by(key=key)
+    user = UserModel.find_by(key)
     token = auth.generate_token(user)
     return jsonify({"jwt": token})
 
