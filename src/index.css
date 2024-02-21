@@ -7,12 +7,25 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --smoky-black: #151410ff;
-  --jet: #2f312eff;
-  --gray: #7a7b7dff;
-  --beaver: #a08f7fff;
-  --rose-taupe: #89615fff;
+  --smoky-black: #0b0704ff;
+  --raisin-black: #252326ff;
+  --black-olive: #3c3c3aff;
+  --davys-gray: #535353ff;
+  --gray: #828383ff;
+  --platinum: #e7e9e7ff;
+  --moss-green: #9d8d50ff;
 }
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Montserrat, sans-serif;
+  background-color: var(--smoky-black);
+  margin: 0;
+}
+
 
 a {
   font-weight: 500;
@@ -20,14 +33,6 @@ a {
 }
 
 a:hover {
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
 }
 
 @media (prefers-color-scheme: light) {
