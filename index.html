@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="author" href="humans.txt" />
+    <link rel="stylesheet" href="css/app.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog</title>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img src="img/logo.png" alt="log" />
+      </div>
+      <div class="navigation">
+        <nav>
+          <ul>
+            <li>Posts</li>
+            <li>TIL</li>
+            <li>Snips</li>
+            <li>Tutorials</li>
+            <li>Categories</li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <hr />
+    <main>
+      <article hx-get="/posts" hx-trigger="load"></article>
+      <section>
+        <article>
+          <h2>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet</h2>
+          <p>Sed ultrices metus ac urna semper, ac dapibus odio molestie. Donec blandit, urna nec elementum lacinia, nulla ante volutpat ligula, at pellentesque sem nisi eu nunc.</p>
+        </article>
+        <article>
+          <h2>Phasellus fermentum elit quis massa ullamcorper cursus</h2>
+          <p>Sed congue nunc vel purus mattis lobortis. Aenean ligula diam, consequat eget tincidunt ut, dapibus vitae urna. Curabitur ac aliquam est. Curabitur a massa non dui mollis ornare. Curabitur justo est, dictum placerat imperdiet et, sagittis id nisi.</p>
+        </article>
+      </section>
+      <aside>
+        <article>
+          <h2>Integer pharetra ornare nulla ut pretium</h2>
+          <p>Sed vestibulum nibh sit amet gravida pretium. Sed suscipit lacinia elit vel dignissim. Donec urna mi, commodo vel dui ultricies, egestas sollicitudin metus.</p>
+        </article>
+        <article>
+          <h2>In congue gravida ultrices</h2>
+          <p>Curabitur tempus ut enim vel tincidunt. Nulla condimentum porta velit et mattis. Nulla facilisi. Maecenas lacinia quam eget tristique accumsan.</p>
+        </article>
+      </aside>
+    </main>
+    <footer></footer>
+  </body>
+</html>

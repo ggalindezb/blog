@@ -1,0 +1,26 @@
+/*TEAM*/
+Owner: Gerardo Galindez
+Twitter: @ggalindezb
+From: Mexico City, MX
+
+/*THANKS*/
+Text to Runes: https://valhyr.com/pages/rune-converter
+Favicon Generator: https://favicon.io/
+Prefinem Icon Generator: https://prefinem.com/simple-icon-generator/
+Coolors Palette from Image: https://coolors.co/image-picker
+Color Palette on Coolors: https://coolors.co/0b0704-252326-3c3c3a-535353-828383-e7e9e7-9d8d50
+Byte: https://photos.app.goo.gl/tfd4D7sDMW2XUHRw8
+
+/*SITE*/
+Last update: 2023/12/04
+Language: English / Español
+Standards: HTML 5, CSS 3, ES6
+Components: React
+Software: Neovim
+
+/*TRIVIA*/
+The runes mean "log"
+The favicon basically stands for "GG", as people called me during my childhood
+The letter is Giml, Phoenician
+This report was originally a React app but then I got hooked with htmx
+Also, it's just a blog, no point whatsoever on more complex tooling
