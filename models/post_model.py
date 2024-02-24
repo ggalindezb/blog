@@ -58,21 +58,26 @@ class PostModel:
         return db
 
     @classmethod
-    def find_by(cls, slug=''):
-        db = cls.client()
-        row = db.select(cls.TABLE_NAME, condition=f'slug = "{slug}"')[0]
-
-        post  = cls()
+    def build_post(cls, row):
+        post = cls()
         post.id = row[0]
         post.slug = row[1]
         post.content = row[2]
         post.created_on = row[3]
         post.updated_on = row[4]
-
         return post
 
-    def all(self):
-        return self.db.select(self.TABLE_NAME)
+    @classmethod
+    def find_by(cls, slug=''):
+        db = cls.client()
+        row = db.select(cls.TABLE_NAME, condition=f'slug = "{slug}"')[0]
+        return cls.build_post(row)
+
+    @classmethod
+    def list(cls, page=1):
+        db = cls.client()
+        rows = db.select(cls.TABLE_NAME)
+        return map(cls.build_post, rows)
 
     def create(self, slug, content):
         now = datetime.now()

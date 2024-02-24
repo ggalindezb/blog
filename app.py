@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, jsonify
-import auth
+from services.auth import generate_token, validate_token
 from models.post_model import PostModel
 from models.user_model import UserModel
 
@@ -9,13 +9,13 @@ app = Flask(__name__)
 def login():
     key = request.get_json()['key']
     user = UserModel.find_by(key)
-    token = auth.generate_token(user)
+    token = generate_token(user)
     return jsonify({"jwt": token})
 
 @app.route('/posts')
 def fetch_posts():
-    posts = PostModel()
-    return jsonify(posts.all())
+    posts = PostModel.list()
+    return render_template('posts.html', posts=posts)
 
 @app.route('/posts/<slug>')
 def fetch_post(slug):
@@ -23,7 +23,7 @@ def fetch_post(slug):
     return render_template('post.html', post=post)
 
 @app.route('/posts', methods=['POST'])
-@auth.validate_token
+@validate_token
 def create_post():
     slug = request.get_json()['slug']
     content = request.get_json()['content']
@@ -32,7 +32,7 @@ def create_post():
     return ('', 201)
 
 @app.route('/posts/<slug>', methods=['PUT'])
-@auth.validate_token
+@validate_token
 def update_post(slug):
     content = request.get_json()['content']
     posts = PostModel()
@@ -40,7 +40,7 @@ def update_post(slug):
     return ('', 200)
 
 @app.route('/posts/<slug>', methods=['DELETE'])
-@auth.validate_token
+@validate_token
 def delete_post(slug):
     posts = PostModel()
     posts.delete(slug)
