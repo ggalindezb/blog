@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, render_template, request, jsonify
 import auth
 from models.post_model import PostModel
 from models.user_model import UserModel
@@ -19,8 +19,8 @@ def fetch_posts():
 
 @app.route('/posts/<slug>')
 def fetch_post(slug):
-    posts = PostModel()
-    return jsonify(posts.find(slug))
+    post = PostModel.find_by(slug)
+    return render_template('post.html', post=post)
 
 @app.route('/posts', methods=['POST'])
 @auth.validate_token
