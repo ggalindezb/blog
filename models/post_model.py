@@ -11,10 +11,6 @@ class PostModel:
         self._created_on = None
         self._updated_on = None
 
-    def __init__(self) -> None:
-        self.db = SQLite4('blog-db-dev')
-        self.db.connect()
-
     @property
     def id(self):
         return self._id
@@ -37,7 +33,7 @@ class PostModel:
 
     @content.setter
     def content(self, content):
-        self._slug = content
+        self._content = content
 
     @property
     def created_on(self):
@@ -57,7 +53,7 @@ class PostModel:
 
     @classmethod
     def client(cls):
-        db = SQLite4('blog-db-dev')
+        db = SQLite4('db/blog-db-dev')
         db.connect()
         return db
 
