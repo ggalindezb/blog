@@ -45,7 +45,6 @@ class UserModel:
     def client(cls):
         db = SQLite4('blog-db-dev')
         db.connect()
-
         return db
 
     @classmethod
