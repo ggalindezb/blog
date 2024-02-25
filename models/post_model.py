@@ -33,7 +33,7 @@ class PostModel:
 
     @content.setter
     def content(self, content):
-        self._content = content
+        self._content = content.decode('utf-8')
 
     @property
     def created_on(self):
