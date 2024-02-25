@@ -13,11 +13,12 @@ python app.py
 Load the SQLite database
 
 ```shell
-sqlite3 blog-db-dev
+sqlite3 db/blog-db-dev
 ```
 
 ```.sql
-.read db.sql
+.read db/schema.sql
+.read db/seeds/development.sql
 .schema
 select * from posts;
 select * from users;
