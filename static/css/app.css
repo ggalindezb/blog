@@ -27,7 +27,8 @@
 
 body {
   font-family: Montserrat, sans-serif;
-  background-color: var(--smoky-black);
+  background: rgb(77,80,97);
+  background: radial-gradient(circle, rgba(77,80,97,1) 0%, rgba(27,29,34,1) 100%);
   margin: 0;
 }
 
@@ -92,8 +93,8 @@ hr:after {
 }
 
 section.featured-post h2 {
-  background: #121FCF;
-  background: linear-gradient(to right, #FFF6A1 0%, #FFF9C1 100%);
+  background: #E8C547;
+  background: linear-gradient(to right, #E8C547 0%, #FFF9C1 100%);
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
