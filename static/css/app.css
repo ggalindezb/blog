@@ -90,3 +90,10 @@ hr:after {
   position: relative;
   top: -13px;
 }
+
+section.featured-post h2 {
+  background: #121FCF;
+  background: linear-gradient(to right, #FFF6A1 0%, #FFF9C1 100%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

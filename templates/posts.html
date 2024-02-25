@@ -1,8 +1,8 @@
 {% for post in posts %}
-  <section>
+  <section class="featured-post">
     <article>
       <h2>{{ post.slug }}</h2>
-      {{ post.content|safe }}
+      <p>{{ post.content|safe }}</p>
     </article>
   </section>
 {% endfor %}
