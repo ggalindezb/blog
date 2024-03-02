@@ -16,7 +16,7 @@ Load the SQLite database
 sqlite3 db/blog-db-dev
 ```
 
-```.sql
+```sql
 .read db/schema.sql
 .read db/seeds/development.sql
 .schema

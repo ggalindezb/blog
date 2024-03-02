@@ -15,7 +15,7 @@ def login():
 @app.route('/posts')
 def fetch_posts():
     posts = PostModel.list()
-    return render_template('posts.html', posts=posts)
+    return render_template('posts.html.jinja', posts=posts)
 
 @app.route('/posts/<slug>')
 def fetch_post(slug):
