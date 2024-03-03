@@ -7,6 +7,7 @@ class PostModel:
     def __init__(self):
         self._id = None
         self._slug = None
+        self._brief = None
         self._content = None
         self._created_on = None
         self._updated_on = None
@@ -26,6 +27,14 @@ class PostModel:
     @slug.setter
     def slug(self, slug):
         self._slug = slug
+
+    @property
+    def brief(self):
+        return self._brief
+
+    @brief.setter
+    def brief(self, brief):
+        self._brief = brief.decode('utf-8')
 
     @property
     def content(self):
@@ -62,9 +71,11 @@ class PostModel:
         post = cls()
         post.id = row[0]
         post.slug = row[1]
-        post.content = row[2]
-        post.created_on = row[3]
-        post.updated_on = row[4]
+        post.brief = row[2]
+        post.content = row[3]
+        post.created_on = row[4]
+        post.updated_on = row[5]
+
         return post
 
     @classmethod
