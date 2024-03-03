@@ -7,7 +7,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --smoky-black: #0b0704ff;
+  --smoky-black: #1f2027;
   --raisin-black: #252326ff;
   --black-olive: #3c3c3aff;
   --davys-gray: #535353ff;
@@ -27,9 +27,7 @@
 
 body {
   font-family: Montserrat, sans-serif;
-  /* background: rgb(77,80,97); */
-  /* background: radial-gradient(circle, rgba(77,80,97,1) 0%, rgba(27,29,34,1) 100%); */
-  background-color: rgba(27,29,34,1);
+  background-color: var(--smoky-black);
   margin: 0;
 }
 
@@ -75,22 +73,12 @@ nav ul li:hover {
   filter: brightness(150%);
 }
 
-hr {
-  border: none;
-  border-top: 4px double var(--black-olive);
-  border-bottom: 4px double var(--black-olive);
-  color: var(--platinum);
-  overflow: visible;
-  text-align: center;
-  height: 5px;
-}
-
-hr:after {
-  background: rgba(27,29,34,1);
-  content: '§';
-  padding: 0 4px;
-  position: relative;
-  top: -13px;
+section.featured-post {
+  background-color: #272831;
+  width: 70%;
+  margin: 2rem auto;
+  padding: 2rem 1rem;
+  border-radius: 16px;
 }
 
 section.featured-post h2 {
