@@ -1,5 +1,6 @@
 from datetime import datetime
 from sqlite4 import SQLite4
+from bs4 import BeautifulSoup
 
 class PostModel:
     TABLE_NAME = "posts"
@@ -7,6 +8,7 @@ class PostModel:
     def __init__(self):
         self._id = None
         self._slug = None
+        self._title = None
         self._brief = None
         self._content = None
         self._created_on = None
@@ -27,6 +29,15 @@ class PostModel:
     @slug.setter
     def slug(self, slug):
         self._slug = slug
+
+    @property
+    def title(self):
+        return self._title
+
+    @title.setter
+    def title(self, content):
+        parser = BeautifulSoup(content, 'html.parser')
+        self._title = parser.h1.string
 
     @property
     def brief(self):
@@ -73,6 +84,7 @@ class PostModel:
         post.slug = row[1]
         post.brief = row[2]
         post.content = row[3]
+        post.title = post.content
         post.created_on = row[4]
         post.updated_on = row[5]
 
