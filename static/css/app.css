@@ -86,4 +86,5 @@ section.featured-post h2 {
   background: linear-gradient(to right, #E8C547 0%, #FFF9C1 100%);
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  letter-spacing: 0.06rem;
 }
