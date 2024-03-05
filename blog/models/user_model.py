@@ -43,13 +43,13 @@ class UserModel:
 
     @classmethod
     def client(cls):
-        db = SQLite4('db/blog-db-dev')
+        db = SQLite4('blog/db/blog-db-dev')
         db.connect()
         return db
 
     @classmethod
     def find_by(cls, key=''):
-        db = cls.client()
+        db = cls.lient()
         row = db.select(cls.TABLE_NAME, condition=f'key = "{key}"')[0]
 
         user = cls()
