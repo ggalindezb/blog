@@ -2,14 +2,6 @@
 
 ## Install
 
-Pull packages and start with:
-
-```shell
-pipenv install
-pipenv shell
-python app.py
-```
-
 Load the SQLite database
 
 ```shell
@@ -23,3 +15,21 @@ sqlite3 db/blog-db-dev
 select * from posts;
 select * from users;
 ```
+
+Pull packages and start with:
+
+```shell
+pipenv install
+pipenv shell
+python app.py
+```
+
+Run `pipenv install` whenever packages change.
+
+## Test
+
+TBD
+
+## Deploy
+
+This will likely be hosted in a plain old tiny EC2 instance, perhaps serverless.
