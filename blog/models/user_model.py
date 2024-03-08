@@ -49,7 +49,7 @@ class UserModel:
 
     @classmethod
     def find_by(cls, key=''):
-        db = cls.lient()
+        db = cls.client()
         row = db.select(cls.TABLE_NAME, condition=f'key = "{key}"')[0]
 
         user = cls()

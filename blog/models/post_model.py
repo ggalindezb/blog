@@ -82,11 +82,10 @@ class PostModel:
         post = cls()
         post.id = row[0]
         post.slug = row[1]
-        post.brief = row[2]
-        post.content = row[3]
+        post.content = row[2]
         post.title = post.content
-        post.created_on = row[4]
-        post.updated_on = row[5]
+        post.created_on = row[3]
+        post.updated_on = row[4]
 
         return post
 
