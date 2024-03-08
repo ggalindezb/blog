@@ -13,5 +13,6 @@ def get_db():
 def close_db(e=None):
     db = g.pop('db', None)
 
-    if db is not None:
-        db.close()
+    # Enable this once ported out of SQLite4
+    # if db is not None:
+    #     db.close()

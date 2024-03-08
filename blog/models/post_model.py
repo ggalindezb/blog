@@ -1,6 +1,7 @@
 from datetime import datetime
 from sqlite4 import SQLite4
 from bs4 import BeautifulSoup
+from ..db import get_db
 
 class PostModel:
     TABLE_NAME = "posts"
@@ -72,12 +73,6 @@ class PostModel:
         self._updated_on = updated_on
 
     @classmethod
-    def client(cls):
-        db = SQLite4('blog/db/blog-db-dev')
-        db.connect()
-        return db
-
-    @classmethod
     def build_post(cls, row):
         post = cls()
         post.id = row[0]
@@ -91,14 +86,12 @@ class PostModel:
 
     @classmethod
     def find_by(cls, slug=''):
-        db = cls.client()
-        row = db.select(cls.TABLE_NAME, condition=f'slug = "{slug}"')[0]
+        row = get_db().select(cls.TABLE_NAME, condition=f'slug = "{slug}"')[0]
         return cls.build_post(row)
 
     @classmethod
     def list(cls, page=1):
-        db = cls.client()
-        rows = db.select(cls.TABLE_NAME)
+        rows = get_db().select(cls.TABLE_NAME)
         return map(cls.build_post, rows)
 
     def create(self, slug, content):
