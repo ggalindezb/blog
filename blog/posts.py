@@ -5,7 +5,7 @@ from blog.services.auth import validate_token
 
 blueprint = Blueprint('posts', __name__, url_prefix='/posts')
 
-@blueprint.route('/all')
+@blueprint.route('/')
 def fetch_posts():
     posts = PostModel.list()
     return render_template('posts.html.jinja', posts=posts)
@@ -23,3 +23,18 @@ def create_post():
     posts = PostModel()
     posts.create(slug, content)
     return ('', 201)
+
+@blueprint.route('<slug>', methods=['PUT'])
+@validate_token
+def update_post(slug):
+    content = request.get_json()['content']
+    posts = PostModel()
+    posts.update(slug, content)
+    return ('', 200)
+
+@blueprint.route('<slug>', methods=['DELETE'])
+@validate_token
+def delete_post(slug):
+    posts = PostModel()
+    posts.delete(slug)
+    return ('', 200)
