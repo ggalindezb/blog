@@ -32,23 +32,6 @@ class PostModel:
         self._slug = slug
 
     @property
-    def title(self):
-        return self._title
-
-    @title.setter
-    def title(self, content):
-        parser = BeautifulSoup(content, 'html.parser')
-        self._title = parser.h1.string
-
-    @property
-    def brief(self):
-        return self._brief
-
-    @brief.setter
-    def brief(self, brief):
-        self._brief = brief.decode('utf-8')
-
-    @property
     def content(self):
         return self._content
 
@@ -72,6 +55,25 @@ class PostModel:
     def updated_on(self, updated_on):
         self._updated_on = updated_on
 
+    # Derived values
+    @property
+    def title(self):
+        return self._title
+
+    @title.setter
+    def title(self, content):
+        parser = BeautifulSoup(content, 'html.parser')
+        self._title = parser.h1.string
+
+    @property
+    def brief(self):
+        return self._brief
+
+    @brief.setter
+    def brief(self, content):
+        parser = BeautifulSoup(content, 'html.parser')
+        self._brief = parser.p.string
+
     @classmethod
     def build_post(cls, row):
         if not row:
@@ -81,9 +83,11 @@ class PostModel:
         post.id = row[0]
         post.slug = row[1]
         post.content = row[2]
-        post.title = post.content
         post.created_on = row[3]
         post.updated_on = row[4]
+
+        post.title = post.content
+        post.brief = post.content
 
         return post
 
