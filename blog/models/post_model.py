@@ -74,6 +74,9 @@ class PostModel:
 
     @classmethod
     def build_post(cls, row):
+        if not row:
+            return None
+
         post = cls()
         post.id = row[0]
         post.slug = row[1]
@@ -86,8 +89,9 @@ class PostModel:
 
     @classmethod
     def find_by(cls, slug=''):
-        row = get_db().select(cls.TABLE_NAME, condition=f'slug = "{slug}"')[0]
-        return cls.build_post(row)
+        rows = get_db().select(cls.TABLE_NAME, condition=f'slug = "{slug}"')
+        if rows:
+            return cls.build_post(rows[0])
 
     @classmethod
     def list(cls, page=1):
@@ -96,14 +100,14 @@ class PostModel:
 
     def create(self, slug, content):
         now = datetime.now()
-        self.db.insert(self.TABLE_NAME, {"slug": slug, "content": content, "created_on": now, "updated_on": now})
+        get_db().insert(self.TABLE_NAME, {"slug": slug, "content": content, "created_on": now, "updated_on": now})
 
     def find(self, slug):
-        return self.db.select(self.TABLE_NAME, condition=f'slug = "{slug}"')
+        return get_db().select(self.TABLE_NAME, condition=f'slug = "{slug}"')
 
     def update(self, slug, content):
         now = datetime.now()
-        return self.db.update(self.TABLE_NAME, {"content": content}, f'slug ="{slug}"')
+        return get_db().update(self.TABLE_NAME, {"content": content}, f'slug ="{slug}"')
 
     def delete(self, slug):
-        return self.db.delete(self.TABLE_NAME, f'slug ="{slug}"')
+        return get_db().delete(self.TABLE_NAME, f'slug ="{slug}"')

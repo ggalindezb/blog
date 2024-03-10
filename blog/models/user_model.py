@@ -1,4 +1,5 @@
 from sqlite4 import SQLite4
+from ..db import get_db
 
 class UserModel:
     TABLE_NAME = "users"
@@ -49,8 +50,7 @@ class UserModel:
 
     @classmethod
     def find_by(cls, key=''):
-        db = cls.client()
-        row = db.select(cls.TABLE_NAME, condition=f'key = "{key}"')[0]
+        row = get_db().select(cls.TABLE_NAME, condition=f'key = "{key}"')[0]
 
         user = cls()
         user.id = row[0]

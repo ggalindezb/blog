@@ -3,6 +3,7 @@ import os
 from flask import Flask
 from . import db
 from . import posts
+from . import auth
 
 def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)
@@ -16,11 +17,8 @@ def create_app(test_config=None):
     else:
         app.config.from_mapping(test_config)
 
+    app.register_blueprint(auth.blueprint)
     app.register_blueprint(posts.blueprint)
     app.teardown_appcontext(db.close_db)
-
-    @app.route('/hello')
-    def hello():
-        return 'Hello, World!'
 
     return app

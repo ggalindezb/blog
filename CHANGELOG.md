@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Organize code per Flask documentation
 - Several UI assets
 - Basic CSS styling
 - htmx powered UI
