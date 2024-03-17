@@ -1,7 +1,13 @@
 {% for post in posts %}
   <section class="featured-post">
     <article>
-      <h2>{{ post.title }}</h2>
+      <h2
+        hx-get="/posts/{{post.slug}}"
+        hx-trigger="click"
+        hx-target="main"
+      >
+        {{ post.title }}
+      </h2>
       <p>{{ post.brief|safe }}</p>
     </article>
   </section>
