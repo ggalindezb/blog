@@ -9,6 +9,7 @@ pyjwt = "*"
 sqlite4 = "*"
 beautifulsoup4 = "*"
 pytest = "*"
+coverage = "*"
 
 [dev-packages]
 
