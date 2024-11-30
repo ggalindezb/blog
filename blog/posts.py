@@ -1,5 +1,4 @@
 from flask import Blueprint, render_template, request
-from blog.db import get_db
 from blog.models.post_model import PostModel
 from blog.services.auth import validate_token
 
