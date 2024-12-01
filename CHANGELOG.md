@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Organize code per Flask documentation
+- Add Pytest
 - Several UI assets
 - Basic CSS styling
 - htmx powered UI
@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Organize code per Flask documentation
 - Begin text styling per UX guidelines
 
 ### Removed
