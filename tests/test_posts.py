@@ -1,4 +1,5 @@
 import re
+from bs4 import BeautifulSoup
 
 def test_fetch_posts(client):
     response = client.get('/posts/')
