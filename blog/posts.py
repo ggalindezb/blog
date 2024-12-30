@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request
 from blog.models.post_model import PostModel
 from blog.services.auth import validate_token
+from bson.objectid import ObjectId
 
 blueprint = Blueprint('posts', __name__, url_prefix='/posts')
 
@@ -11,7 +12,7 @@ def fetch_posts():
 
 @blueprint.route('<slug>')
 def fetch_post(slug):
-    post = PostModel.find_by(slug)
+    post = PostModel.find({'slug': slug})
     return render_template('post.html', post=post)
 
 @blueprint.route('/', methods=['POST'])

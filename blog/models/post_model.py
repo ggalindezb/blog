@@ -1,7 +1,7 @@
 from datetime import datetime
 from sqlite4 import SQLite4
 from bs4 import BeautifulSoup
-from ..db import get_db
+from ..db import get_db, get_mongo_db
 
 class PostModel:
     TABLE_NAME = "posts"
@@ -37,7 +37,7 @@ class PostModel:
 
     @content.setter
     def content(self, content):
-        self._content = content.decode('utf-8')
+        self._content = content
 
     @property
     def created_on(self):
@@ -55,7 +55,6 @@ class PostModel:
     def updated_on(self, updated_on):
         self._updated_on = updated_on
 
-    # Derived values
     @property
     def title(self):
         return self._title
@@ -75,16 +74,14 @@ class PostModel:
         self._brief = parser.p.string
 
     @classmethod
-    def build_post(cls, row):
-        if not row:
+    def build_post(cls, doc):
+        if not doc:
             return None
 
         post = cls()
-        post.id = row[0]
-        post.slug = row[1]
-        post.content = row[2]
-        post.created_on = row[3]
-        post.updated_on = row[4]
+
+        for key, value in doc.items():
+            setattr(post, key, value)
 
         post.title = post.content
         post.brief = post.content
@@ -92,22 +89,18 @@ class PostModel:
         return post
 
     @classmethod
-    def find_by(cls, slug=''):
-        rows = get_db().select(cls.TABLE_NAME, condition=f'slug = "{slug}"')
-        if rows:
-            return cls.build_post(rows[0])
+    def find(cls, params):
+        doc = get_mongo_db().posts.find_one(params)
+        return cls.build_post(doc)
 
     @classmethod
     def list(cls, page=1):
-        rows = get_db().select(cls.TABLE_NAME)
-        return map(cls.build_post, rows)
+        docs = get_mongo_db().posts.find({})
+        return map(cls.build_post, docs)
 
     def create(self, slug, content):
         now = datetime.now()
         get_db().insert(self.TABLE_NAME, {"slug": slug, "content": content, "created_on": now, "updated_on": now})
-
-    def find(self, slug):
-        return get_db().select(self.TABLE_NAME, condition=f'slug = "{slug}"')
 
     def update(self, slug, content):
         now = datetime.now()
