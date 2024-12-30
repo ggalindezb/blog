@@ -1,6 +1,10 @@
 from sqlite4 import SQLite4
-
 from flask import current_app, g
+from pymongo import MongoClient
+
+def get_mongo_db():
+    client = MongoClient()
+    return client.blog
 
 def get_db():
     if 'db' not in g:

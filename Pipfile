@@ -10,6 +10,7 @@ sqlite4 = "*"
 beautifulsoup4 = "*"
 pytest = "*"
 coverage = "*"
+pymongo = "*"
 
 [dev-packages]
 
