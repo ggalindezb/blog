@@ -1,5 +1,4 @@
-from sqlite4 import SQLite4
-from ..db import get_db
+from ..db import get_mongo_db
 
 class UserModel:
     TABLE_NAME = "users"
@@ -43,19 +42,18 @@ class UserModel:
         self._updated_on = updated_on
 
     @classmethod
-    def client(cls):
-        db = SQLite4('blog/db/blog-db-dev')
-        db.connect()
-        return db
-
-    @classmethod
-    def find_by(cls, key=''):
-        row = get_db().select(cls.TABLE_NAME, condition=f'key = "{key}"')[0]
+    def build_user(cls, doc):
+        if not doc:
+            return None
 
         user = cls()
-        user.id = row[0]
-        user.key = row[1]
-        user.created_on = row[2]
-        user.updated_on = row[3]
+        doc['id'] = doc.pop('_id')
+        for key, value in doc.items():
+            setattr(user, key, value)
 
         return user
+
+    @classmethod
+    def find(cls, params):
+        doc = get_mongo_db().posts.find_one(params)
+        return cls.build_user(doc)
