@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Add model test coverage
+- Port models to Mongo
 - Add Pytest
 - Several UI assets
 - Basic CSS styling
