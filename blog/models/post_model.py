@@ -1,5 +1,4 @@
 from datetime import datetime
-from sqlite4 import SQLite4
 from bs4 import BeautifulSoup
 from ..db import get_mongo_db
 
@@ -62,7 +61,8 @@ class PostModel:
     @title.setter
     def title(self, content):
         parser = BeautifulSoup(content, 'html.parser')
-        self._title = parser.h1.string
+        if parser.h1:
+            self._title = parser.h1.string
 
     @property
     def brief(self):
@@ -71,7 +71,8 @@ class PostModel:
     @brief.setter
     def brief(self, content):
         parser = BeautifulSoup(content, 'html.parser')
-        self._brief = parser.p.string
+        if parser.p:
+            self._brief = parser.p.string
 
     @classmethod
     def build_post(cls, doc):
