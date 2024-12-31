@@ -1,7 +1,6 @@
 from flask import Blueprint, render_template, request
 from blog.models.post_model import PostModel
 from blog.services.auth import validate_token
-from bson.objectid import ObjectId
 
 blueprint = Blueprint('posts', __name__, url_prefix='/posts')
 
@@ -18,18 +17,17 @@ def fetch_post(slug):
 @blueprint.route('/', methods=['POST'])
 @validate_token
 def create_post():
+    breakpoint()
     slug = request.get_json()['slug']
     content = request.get_json()['content']
-    posts = PostModel()
-    posts.create(slug, content)
+    PostModel.create(slug, content)
     return ('', 201)
 
 @blueprint.route('<slug>', methods=['PUT'])
 @validate_token
 def update_post(slug):
     content = request.get_json()['content']
-    posts = PostModel()
-    posts.update(slug, content)
+    PostModel.update(slug, content)
     return ('', 200)
 
 @blueprint.route('<slug>', methods=['DELETE'])

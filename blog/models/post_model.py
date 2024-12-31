@@ -1,7 +1,7 @@
 from datetime import datetime
 from sqlite4 import SQLite4
 from bs4 import BeautifulSoup
-from ..db import get_db, get_mongo_db
+from ..db import get_mongo_db
 
 class PostModel:
     TABLE_NAME = "posts"
@@ -79,7 +79,7 @@ class PostModel:
             return None
 
         post = cls()
-
+        doc['id'] = doc.pop('_id')
         for key, value in doc.items():
             setattr(post, key, value)
 
@@ -94,17 +94,20 @@ class PostModel:
         return cls.build_post(doc)
 
     @classmethod
-    def list(cls, page=1):
+    def list(cls):
         docs = get_mongo_db().posts.find({})
         return map(cls.build_post, docs)
 
-    def create(self, slug, content):
+    @classmethod
+    def create(cls, slug, content):
         now = datetime.now()
-        get_db().insert(self.TABLE_NAME, {"slug": slug, "content": content, "created_on": now, "updated_on": now})
+        get_mongo_db().posts.insert_one({"slug": slug, "content": content, "created_on": now, "updated_on": now})
 
-    def update(self, slug, content):
+    @classmethod
+    def update(cls, slug, content):
         now = datetime.now()
-        return get_db().update(self.TABLE_NAME, {"content": content}, f'slug ="{slug}"')
+        get_mongo_db().posts.update_one({'slug': slug}, {'$set': { 'updated_on': now, 'content': content}})
 
-    def delete(self, slug):
-        return get_db().delete(self.TABLE_NAME, f'slug ="{slug}"')
+    @classmethod
+    def delete(cls, slug):
+        get_mongo_db().posts.delete_one({'slug': slug})
