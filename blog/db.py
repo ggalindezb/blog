@@ -1,21 +1,14 @@
-from sqlite4 import SQLite4
 from flask import current_app, g
 from pymongo import MongoClient
 
 def get_mongo_db():
-    client = MongoClient()
-    return client.blog
+    if 'mongo_db' not in g:
+        g.mongo_db = getattr(MongoClient(), current_app.config['DATABASE'])
 
-def get_db():
-    if 'db' not in g:
-        g.db = SQLite4(current_app.config['DATABASE'])
-        g.db.connect()
+    return g.mongo_db
 
-    return g.db
+def close_db(__exception__):
+    mongo_db = g.pop('mongo_db', None)
 
-def close_db(e=None):
-    db = g.pop('db', None)
-
-    # Enable this once ported out of SQLite4
-    # if db is not None:
-    #     db.close()
+    if mongo_db is not None:
+        mongo_db.close()
