@@ -1,6 +1,16 @@
 use blog;
 const fs = require('fs');
 
+db.users.insertMany(
+  [
+    {
+      key: '2a1e0fc0-7bab-4aa0-9e2f-23d7ddd81241',
+      created_on: '2024-12-01 00:00:00',
+      updated_on: '2024-12-01 00:00:00'
+    }
+  ]
+)
+
 db.posts.insertMany(
   [
     {
