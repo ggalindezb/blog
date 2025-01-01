@@ -17,7 +17,6 @@ def fetch_post(slug):
 @blueprint.route('/', methods=['POST'])
 @validate_token
 def create_post():
-    breakpoint()
     slug = request.get_json()['slug']
     content = request.get_json()['content']
     PostModel.create(slug, content)

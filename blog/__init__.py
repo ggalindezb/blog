@@ -19,6 +19,6 @@ def create_app(test_config=None):
     app.register_blueprint(maintenance.blueprint)
     app.register_blueprint(auth.blueprint)
     app.register_blueprint(posts.blueprint)
-    app.teardown_appcontext(db.close_db)
+    # app.teardown_appcontext(db.close_db)
 
     return app

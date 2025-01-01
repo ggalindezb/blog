@@ -7,6 +7,6 @@ blueprint = Blueprint('auth', __name__, url_prefix='/auth')
 @blueprint.route('/login', methods=['POST'])
 def login():
     key = request.get_json()['key']
-    user = UserModel.find_by(key)
+    user = UserModel.find({'key': key})
     token = generate_token(user)
-    return jsonify({"jwt": token})
+    return jsonify({'jwt': token})

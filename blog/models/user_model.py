@@ -47,7 +47,6 @@ class UserModel:
             return None
 
         user = cls()
-        doc['id'] = doc.pop('_id')
         for key, value in doc.items():
             setattr(user, key, value)
 
@@ -55,5 +54,5 @@ class UserModel:
 
     @classmethod
     def find(cls, params):
-        doc = get_mongo_db().posts.find_one(params)
+        doc = get_mongo_db().users.find_one(params)
         return cls.build_user(doc)
