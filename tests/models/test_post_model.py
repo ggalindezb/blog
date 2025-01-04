@@ -15,12 +15,12 @@ def test_build_post():
     post = PostModel.build_post(doc)
 
     assert post
-    assert post.id, 1
-    assert post.slug, 'sample'
-    assert post.title, 'Sample title'
-    assert post.brief, 'Sample brief'
-    assert post.created_on, now
-    assert post.updated_on, now
+    assert post.id == ObjectId('67723cecfc75dbb91fb1226f')
+    assert post.slug == 'sample'
+    assert post.title == 'Sample title'
+    assert post.brief == 'Sample brief'
+    assert post.created_on == now
+    assert post.updated_on == now
 
 def test_build_post_with_none():
     post = PostModel.build_post(None)
@@ -43,9 +43,9 @@ def test_find(mock_get_mongo_db):
     post = PostModel.find({'slug': 'sample'})
 
     assert post
-    assert post.slug, 'sample'
-    assert post.title, 'Sample title'
-    assert post.brief, 'Sample brief'
+    assert post.slug == 'sample'
+    assert post.title == 'Sample title'
+    assert post.brief == 'Sample brief'
 
 @patch('blog.models.post_model.get_mongo_db')
 def test_list(mock_get_mongo_db):
@@ -68,9 +68,9 @@ def test_list(mock_get_mongo_db):
 
     assert len(posts) == 1
     assert post
-    assert post.slug, 'sample'
-    assert post.title, 'Sample title'
-    assert post.brief, 'Sample brief'
+    assert post.slug == 'sample'
+    assert post.title == 'Sample title'
+    assert post.brief == 'Sample brief'
 
 @patch('blog.models.post_model.get_mongo_db')
 def test_create(mock_get_mongo_db):

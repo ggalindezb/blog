@@ -47,6 +47,7 @@ class UserModel:
             return None
 
         user = cls()
+        doc['id'] = doc.pop('_id')
         for key, value in doc.items():
             setattr(user, key, value)
 
