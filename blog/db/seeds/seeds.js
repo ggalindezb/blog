@@ -1,5 +1,8 @@
-use blog;
-const fs = require('fs');
+const fs = require('fs')
+
+db = connect( 'mongodb://localhost/blog' );
+db.getCollectionNames().forEach(collection => db[collection].deleteMany({}))
+db.dropDatabase({})
 
 db.users.insertMany(
   [
