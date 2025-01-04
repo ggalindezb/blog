@@ -2,33 +2,39 @@
 
 ## Install
 
-Load the SQLite database
+Install MongoDB, start the service and load seed data.
 
-```shell
-sqlite3 db/blog-db-dev
-```
-
-```sql
-.read db/schema.sql
-.read db/seeds/development.sql
-.schema
-select * from posts;
-select * from users;
+```sh
+sudo systemctl start mongod
+mongosh --file blog/db/seeds/seeds.js
 ```
 
 Pull packages and start with:
 
-```shell
+```sh
+pip install pipenv
 pipenv install
 pipenv shell
-python app.py
+flask --app blog run --debug
 ```
 
 Run `pipenv install` whenever packages change.
 
 ## Test
 
-TBD
+Run tests with `pytest`.
+
+Check coverage with `coverage run -m pytest && coverage html && open htmlcov/index.html`
+
+## Mongosh
+
+A few useful commands so I don't forget.
+
+```js
+db.getCollectionNames()
+db.blog.posts.find({})
+db.blog.posts.deleteMany({})
+```
 
 ## Deploy
 
