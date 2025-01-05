@@ -16,6 +16,7 @@
     <title>Blog</title>
   </head>
   <body>
+    <style hx-get="/posts/meta" hx-trigger="load"></style>
     <header>
       <div class="logo">
         <a href="/static/index.html">
@@ -35,6 +36,18 @@
       </div>
     </header>
     <main hx-get="/posts" hx-trigger="load">
+      <section class="featured-post">
+        <article>
+          <h2
+            hx-get="/posts/test"
+            hx-trigger="click"
+            hx-target="main"
+          >
+            Test
+          </h2>
+          <p>Sample</p>
+        </article>
+      </section>
     </main>
     <footer></footer>
   </body>

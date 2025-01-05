@@ -1,14 +1,19 @@
 {% for post in posts %}
-  <section class="featured-post">
+  <section class="main-post {{ post.slug }}-img">
     <article>
-      <h2
-        hx-get="/posts/{{post.slug}}"
-        hx-trigger="click"
-        hx-target="main"
-      >
-        {{ post.title }}
-      </h2>
-      <p>{{ post.brief|safe }}</p>
+      <div class="title">
+        <h2
+          class="{{ post.slug }}-gradient"
+          hx-get="/posts/{{post.slug}}"
+          hx-trigger="click"
+          hx-target="main"
+        >
+          {{ post.title }}
+        </h2>
+      </div>
+      <div class="brief">
+        <p>{{ post.brief|safe }}</p>
+      </div>
     </article>
   </section>
 {% endfor %}

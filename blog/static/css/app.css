@@ -73,6 +73,37 @@ nav ul li:hover {
   filter: brightness(150%);
 }
 
+section.main-post {
+  background-color: #272831;
+  width: 70%;
+  margin: 2rem auto;
+  border-radius: 16px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-blend-mode: multiply;
+  background-color: rgba(0,0,0,0.7);
+}
+
+section.main-post .title {
+  padding: 1rem 2rem;
+  background: rgba(0,0,0,0.2);
+  border-radius: 16px 16px 0 0;
+}
+
+section.main-post .title h2 {
+  margin-bottom: 0.75rem;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 0.06rem;
+}
+
+section.main-post article .brief {
+  padding: 0 2rem 1rem 2rem;
+  border-radius: 0 0 16px 16px;
+  line-height: 1.75rem;
+}
+
 section.featured-post {
   background-color: #272831;
   width: 70%;
@@ -87,4 +118,13 @@ section.featured-post h2 {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   letter-spacing: 0.06rem;
+}
+
+section.featured-post p {
+  /* background-image: url('../img/1.jpg'); */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-blend-mode: multiply;
+  background-color: rgba(0,0,0,0.7);
 }

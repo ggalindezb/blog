@@ -9,6 +9,11 @@ def fetch_posts():
     posts = PostModel.list()
     return render_template('posts.html.jinja', posts=posts)
 
+@blueprint.route('meta', methods=['GET'])
+def fetch_posts_meta():
+    posts = PostModel.list()
+    return render_template('posts_meta.html.jinja', posts=posts)
+
 @blueprint.route('<slug>')
 def fetch_post(slug):
     post = PostModel.find({'slug': slug})

@@ -1,0 +1,9 @@
+{% for post in posts %}
+  .{{ post.slug }}-img {
+  background-image: url('{{post.featured_image}}');
+  }
+
+  .{{post.slug}}-gradient {
+    background: linear-gradient(to right, #EB6050 0%, #BA3C1C 100%);
+  }
+{% endfor %}
