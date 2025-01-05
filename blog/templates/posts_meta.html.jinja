@@ -4,6 +4,6 @@
   }
 
   .{{post.slug}}-gradient {
-    background: linear-gradient(to right, #EB6050 0%, #BA3C1C 100%);
+  background: linear-gradient(to right, {{ post.gradient[0] }} 0%, {{ post.gradient[1] }} 100%);
   }
 {% endfor %}
