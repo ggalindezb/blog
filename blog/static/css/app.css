@@ -112,6 +112,13 @@ section.featured-post {
   border-radius: 16px;
 }
 
+section.featured-post > article > img {
+  display: block;
+  margin: 2rem auto;
+  max-width: 100%;
+  max-height: 50vh;
+}
+
 section.featured-post h2 {
   background: #E8C547;
   background: linear-gradient(to right, #E8C547 0%, #FFF9C1 100%);
