@@ -44,7 +44,7 @@ class PostModel:
 
     @created_on.setter
     def created_on(self, created_on):
-        self._created_on = created_on
+        self._created_on = datetime.fromisoformat(created_on)
 
     @property
     def updated_on(self):
@@ -52,7 +52,7 @@ class PostModel:
 
     @updated_on.setter
     def updated_on(self, updated_on):
-        self._updated_on = updated_on
+        self._updated_on = datetime.fromisoformat(updated_on)
 
     @property
     def title(self):

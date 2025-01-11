@@ -9,8 +9,8 @@ def test_build_post():
       '_id': ObjectId('67723cecfc75dbb91fb1226f'),
       'slug': 'sample',
       'content': '<h1>Sample title</h1><p>Sample brief</p>',
-      'created_on': now,
-      'updated_on': now
+      'created_on': now.isoformat(),
+      'updated_on': now.isoformat()
     }
     post = PostModel.build_post(doc)
 
@@ -36,8 +36,8 @@ def test_find(mock_get_mongo_db):
       '_id': ObjectId('67723cecfc75dbb91fb1226f'),
       'slug': 'sample',
       'content': '<h1>Sample title</h1><p>Sample brief</p>',
-      'created_on': now,
-      'updated_on': now
+      'created_on': now.isoformat(),
+      'updated_on': now.isoformat()
     }
 
     post = PostModel.find({'slug': 'sample'})
@@ -55,11 +55,11 @@ def test_list(mock_get_mongo_db):
 
     mock_collection.find.return_value = [
         {
-            '_id': ObjectId('67723cecfc75dbb91fb1226f'),
-            'slug': 'sample',
-            'content': '<h1>Sample title</h1><p>Sample brief</p>',
-            'created_on': now,
-            'updated_on': now
+          '_id': ObjectId('67723cecfc75dbb91fb1226f'),
+          'slug': 'sample',
+          'content': '<h1>Sample title</h1><p>Sample brief</p>',
+          'created_on': now.isoformat(),
+          'updated_on': now.isoformat()
         }
     ]
 
@@ -79,7 +79,7 @@ def test_create(mock_get_mongo_db):
 
     slug = 'sample'
     content = '<h1>Sample title</h1><p>Sample brief</p>'
-    now = datetime.now()
+    now = datetime.now().isoformat()
 
     with patch("blog.models.post_model.datetime") as mock_datetime:
         mock_datetime.now.return_value = now
@@ -101,7 +101,7 @@ def test_update(mock_get_mongo_db):
 
     slug = 'test-slug'
     content = '<h1>Updated Title</h1><p>Updated Brief</p>'
-    now = datetime.now()
+    now = datetime.now().isoformat()
 
     with patch('blog.models.post_model.datetime') as mock_datetime:
         mock_datetime.now.return_value = now
