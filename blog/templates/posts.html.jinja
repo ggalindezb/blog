@@ -1,19 +1,18 @@
-{% for post in posts %}
-  <section class="main-post {{ post.slug }}-img">
-    <article>
-      <div class="title">
-        <h2
-          class="{{ post.slug }}-gradient"
-          hx-get="/posts/{{post.slug}}"
-          hx-trigger="click"
-          hx-target="main"
-        >
-          {{ post.title }}
-        </h2>
-      </div>
-      <div class="brief">
-        <p>{{ post.brief|safe }}</p>
-      </div>
-    </article>
-  </section>
-{% endfor %}
+{% extends 'base.html' %}
+
+{% block content %}
+  {% for post in posts %}
+    <section class="main-post {{ post.slug }}-img">
+      <a href="/posts/{{post.slug}}">
+        <article>
+          <div class="title">
+            <h2 class="{{ post.slug }}-gradient">{{ post.title }}</h2>
+          </div>
+          <div class="brief">
+            <p>{{ post.brief|safe }}</p>
+          </div>
+        </article>
+      </a>
+    </section>
+  {% endfor %}
+{% endblock %}
