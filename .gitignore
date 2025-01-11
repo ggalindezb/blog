@@ -1,7 +1,6 @@
-# SQLite dev db
-blog-db-dev
+# Test coverage artifacts
 .coverage
-coverage.lcov
+htmlcov
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
