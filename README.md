@@ -39,3 +39,11 @@ db.blog.posts.deleteMany({})
 ## Deploy
 
 This will likely be hosted in a plain old tiny EC2 instance, perhaps serverless.
+
+### Docker build
+
+```sh
+pipenv requirements > requirements.txt
+docker build . --tag blog
+docker run --network host -ti blog
+```
