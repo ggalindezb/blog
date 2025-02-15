@@ -1,6 +1,7 @@
 from flask import Flask
 from . import db
 from . import maintenance
+from . import main
 from . import posts
 from . import auth
 
@@ -18,6 +19,7 @@ def create_app(test_config=None):
 
     app.register_blueprint(maintenance.blueprint)
     app.register_blueprint(auth.blueprint)
+    app.register_blueprint(main.blueprint)
     app.register_blueprint(posts.blueprint)
     # app.teardown_appcontext(db.close_db)
 
