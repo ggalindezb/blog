@@ -1,4 +1,7 @@
 from flask import Flask
+from dotenv import load_dotenv
+import os
+
 from . import db
 from . import maintenance
 from . import main
@@ -6,10 +9,11 @@ from . import posts
 from . import auth
 
 def create_app(test_config=None):
+    load_dotenv()
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
-        SECRET_KEY='dev',
-        DATABASE='blog',
+        SECRET_KEY=os.environ['SECRET_KEY'],
+        DATABASE=os.environ['DATABASE'],
     )
 
     if test_config is None:

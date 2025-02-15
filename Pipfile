@@ -12,6 +12,7 @@ pytest = "*"
 coverage = "*"
 pymongo = "*"
 ruff = "*"
+python-dotenv = "*"
 
 [dev-packages]
 

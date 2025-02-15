@@ -31,9 +31,11 @@ Check coverage with `coverage run -m pytest && coverage html && open htmlcov/ind
 A few useful commands so I don't forget.
 
 ```js
+use blog
+
 db.getCollectionNames()
-db.blog.posts.find({})
-db.blog.posts.deleteMany({})
+db.posts.find({})
+db.posts.deleteMany({})
 ```
 
 ## Deploy

@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Add dotenv
+- Add base Docker image
 - Add better styling
 - Add Mongo seeds
 - Add model test coverage
