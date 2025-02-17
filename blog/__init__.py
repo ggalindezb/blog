@@ -1,5 +1,6 @@
 from flask import Flask
 from dotenv import load_dotenv
+from werkzeug.middleware.proxy_fix import ProxyFix
 import os
 
 from . import db
@@ -14,6 +15,7 @@ def create_app(test_config=None):
     app.config.from_mapping(
         SECRET_KEY=os.environ['SECRET_KEY'],
         DATABASE=os.environ['DATABASE'],
+        APP_ENV=os.environ['APP_ENV']
     )
 
     if test_config is None:
@@ -26,5 +28,10 @@ def create_app(test_config=None):
     app.register_blueprint(main.blueprint)
     app.register_blueprint(posts.blueprint)
     # app.teardown_appcontext(db.close_db)
+
+    if app.config['APP_ENV'] == 'production':
+        app.wsgi_app = ProxyFix(
+            app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1
+        )
 
     return app

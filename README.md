@@ -18,6 +18,12 @@ pipenv shell
 flask --app blog run --debug
 ```
 
+Run a prod server with `waitress`
+
+```sh
+waitress-serve --host 127.0.0.1 --call blog:create_app
+```
+
 Run `pipenv install` whenever packages change.
 
 ## Test

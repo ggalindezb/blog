@@ -13,6 +13,7 @@ coverage = "*"
 pymongo = "*"
 ruff = "*"
 python-dotenv = "*"
+waitress = "*"
 
 [dev-packages]
 
