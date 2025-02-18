@@ -8,5 +8,8 @@ blueprint = Blueprint('auth', __name__, url_prefix='/auth')
 def login():
     key = request.get_json()['key']
     user = UserModel.find({'key': key})
-    token = generate_token(user)
-    return jsonify({'jwt': token})
+    if user:
+        token = generate_token(user)
+        return jsonify({'jwt': token}), 201
+    else:
+        return ('', 401)

@@ -3,7 +3,6 @@ from dotenv import load_dotenv
 from werkzeug.middleware.proxy_fix import ProxyFix
 import os
 
-from . import db
 from . import maintenance
 from . import main
 from . import posts

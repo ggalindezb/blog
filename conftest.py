@@ -5,7 +5,9 @@ from blog import create_app
 def app():
     app = create_app({
         'TESTING': True,
-        'DATABASE': 'blog_test'
+        'SECRET_KEY': 'test',
+        'DATABASE': 'blog_test',
+        'APP_ENV': 'test'
     })
 
     yield app
