@@ -1,3 +1,10 @@
+# Custom configs
+.envrc
+
+# Terraform
+terraform/.terraform
+terraform/.terraform.lock.hcl
+
 # Test coverage artifacts
 .coverage
 htmlcov
